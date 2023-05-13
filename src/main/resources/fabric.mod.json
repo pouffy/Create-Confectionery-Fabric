@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "create_confectionery",
   "version": "${version}",
-  "name": "Example Mod",
+  "name": "Create: Confectionery",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
     "Me!"
@@ -11,15 +11,18 @@
     "sources": "https://github.com/Fabricators-of-Create/create-fabric-addon-template"
   },
   "license": "CC0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/create_confectionery/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.example.modid.ExampleMod"
+      "com.pouffydev.create_confectionery.Confectionery"
+    ],
+    "fabric-datagen": [
+      "com.pouffydev.create_confectionery.ConfectioneryData"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "create_confectionery.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",
