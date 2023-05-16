@@ -1,0 +1,18 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "create_confectionery:crushed_cocoa"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_confectionery:cocoa_powder"
+    },
+    {
+      "item": "create_confectionery:cocoa_butter",
+      "chance": 0.75
+    }
+  ],
+  "processingTime": 75
+}

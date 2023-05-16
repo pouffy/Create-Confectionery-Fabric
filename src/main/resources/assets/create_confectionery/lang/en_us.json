@@ -1,4 +1,27 @@
 {
+  "itemGroup.create_confectionery.main": "Create: Confectionery",
+
   "effect.create_confectionery.rest": "Rest",
-  "effect.create_confectionery.stimulation": "Stimulation"
+  "effect.create_confectionery.stimulation": "Stimulation",
+
+
+  "item.create_confectionery.cocoa_butter": "Cocoa Butter",
+  "item.create_confectionery.crushed_cocoa": "Crushed Cocoa",
+  "item.create_confectionery.cocoa_powder": "Cocoa Powder",
+
+  "item.create_confectionery.bar_of_white_chocolate": "Bar of White Chocolate",
+  "fluid.create_confectionery.white_chocolate": "White Chocolate",
+  "item.create_confectionery.white_chocolate_bucket": "Bucket of White Chocolate",
+
+  "item.create_confectionery.bar_of_black_chocolate": "Bar of Dark Chocolate",
+  "fluid.create_confectionery.black_chocolate": "Dark Chocolate",
+  "item.create_confectionery.black_chocolate_bucket": "Bucket of Dark Chocolate",
+
+  "item.create_confectionery.bar_of_ruby_chocolate": "Bar of Ruby Chocolate",
+  "fluid.create_confectionery.ruby_chocolate": "Ruby Chocolate",
+  "item.create_confectionery.ruby_chocolate_bucket": "Bucket of Ruby Chocolate",
+
+  "item.create_confectionery.bar_of_caramel": "Bar of Caramel",
+  "fluid.create_confectionery.caramel": "Caramel",
+  "item.create_confectionery.caramel_bucket": "Bucket of Caramel"
 }

@@ -8,6 +8,7 @@ import static net.minecraft.world.item.Items.BUCKET;
 import javax.annotation.Nullable;
 
 import com.simibubi.create.AllTags;
+import com.simibubi.create.content.palettes.AllPaletteStoneTypes;
 import com.simibubi.create.foundation.fluid.FluidHelper;
 import com.simibubi.create.foundation.utility.Iterate;
 import com.tterrag.registrate.fabric.SimpleFlowableFluid;
@@ -38,16 +39,70 @@ import net.minecraft.network.chat.Component;
 public class FluidRegistry {
 
 	public static final FluidEntry<SimpleFlowableFluid.Flowing> DARK_CHOCOLATE =
-			REGISTRATE.standardFluid("dark_chocolate"/*, NoColorFluidAttributes::new*/)
+			REGISTRATE.standardFluid("black_chocolate"/*, NoColorFluidAttributes::new*/)
 					.lang("Dark Chocolate")
-					.tag(AllTags.forgeFluidTag("dark_chocolate"), FluidTags.WATER) // fabric: water tag controls physics
+					.tag(AllTags.forgeFluidTag("black_chocolate"), FluidTags.WATER) // fabric: water tag controls physics
 					.fluidProperties(p -> p.levelDecreasePerBlock(2)
 							.tickRate(25)
 							.flowSpeed(3)
 							.blastResistance(100f))
-					.fluidAttributes(() -> new CreateAttributeHandler("block.create_confectionery.dark_chocolate", 1500, 1400))
-					.onRegisterAfter(Registry.ITEM_REGISTRY, chocolate -> {
-						Fluid source = chocolate.getSource();
+					.fluidAttributes(() -> new CreateAttributeHandler("fluid.create_confectionery.black_chocolate", 1500, 1400))
+					.onRegisterAfter(Registry.ITEM_REGISTRY, black_chocolate -> {
+						Fluid source = black_chocolate.getSource();
+						// transfer values
+						FluidStorage.combinedItemApiProvider(source.getBucket()).register(context ->
+								new FullItemFluidStorage(context, bucket -> ItemVariant.of(BUCKET), FluidVariant.of(source), FluidConstants.BUCKET));
+						FluidStorage.combinedItemApiProvider(BUCKET).register(context ->
+								new EmptyItemFluidStorage(context, bucket -> ItemVariant.of(source.getBucket()), source, FluidConstants.BUCKET));
+					})
+					.register();
+	public static final FluidEntry<SimpleFlowableFluid.Flowing> WHITE_CHOCOLATE =
+			REGISTRATE.standardFluid("white_chocolate"/*, NoColorFluidAttributes::new*/)
+					.lang("White Chocolate")
+					.tag(AllTags.forgeFluidTag("white_chocolate"), FluidTags.WATER) // fabric: water tag controls physics
+					.fluidProperties(p -> p.levelDecreasePerBlock(2)
+							.tickRate(25)
+							.flowSpeed(3)
+							.blastResistance(100f))
+					.fluidAttributes(() -> new CreateAttributeHandler("fluid.create_confectionery.white_chocolate", 1500, 1400))
+					.onRegisterAfter(Registry.ITEM_REGISTRY, white_chocolate -> {
+						Fluid source = white_chocolate.getSource();
+						// transfer values
+						FluidStorage.combinedItemApiProvider(source.getBucket()).register(context ->
+								new FullItemFluidStorage(context, bucket -> ItemVariant.of(BUCKET), FluidVariant.of(source), FluidConstants.BUCKET));
+						FluidStorage.combinedItemApiProvider(BUCKET).register(context ->
+								new EmptyItemFluidStorage(context, bucket -> ItemVariant.of(source.getBucket()), source, FluidConstants.BUCKET));
+					})
+					.register();
+	public static final FluidEntry<SimpleFlowableFluid.Flowing> RUBY_CHOCOLATE =
+			REGISTRATE.standardFluid("ruby_chocolate"/*, NoColorFluidAttributes::new*/)
+					.lang("Ruby Chocolate")
+					.tag(AllTags.forgeFluidTag("ruby_chocolate"), FluidTags.WATER) // fabric: water tag controls physics
+					.fluidProperties(p -> p.levelDecreasePerBlock(2)
+							.tickRate(25)
+							.flowSpeed(3)
+							.blastResistance(100f))
+					.fluidAttributes(() -> new CreateAttributeHandler("fluid.create_confectionery.ruby_chocolate", 1500, 1400))
+					.onRegisterAfter(Registry.ITEM_REGISTRY, ruby_chocolate -> {
+						Fluid source = ruby_chocolate.getSource();
+						// transfer values
+						FluidStorage.combinedItemApiProvider(source.getBucket()).register(context ->
+								new FullItemFluidStorage(context, bucket -> ItemVariant.of(BUCKET), FluidVariant.of(source), FluidConstants.BUCKET));
+						FluidStorage.combinedItemApiProvider(BUCKET).register(context ->
+								new EmptyItemFluidStorage(context, bucket -> ItemVariant.of(source.getBucket()), source, FluidConstants.BUCKET));
+					})
+					.register();
+	public static final FluidEntry<SimpleFlowableFluid.Flowing> CARAMEL =
+			REGISTRATE.standardFluid("caramel"/*, NoColorFluidAttributes::new*/)
+					.lang("Caramel")
+					.tag(AllTags.forgeFluidTag("caramel"), FluidTags.WATER) // fabric: water tag controls physics
+					.fluidProperties(p -> p.levelDecreasePerBlock(2)
+							.tickRate(25)
+							.flowSpeed(3)
+							.blastResistance(100f))
+					.fluidAttributes(() -> new CreateAttributeHandler("fluid.create_confectionery.caramel", 1500, 1400))
+					.onRegisterAfter(Registry.ITEM_REGISTRY, caramel -> {
+						Fluid source = caramel.getSource();
 						// transfer values
 						FluidStorage.combinedItemApiProvider(source.getBucket()).register(context ->
 								new FullItemFluidStorage(context, bucket -> ItemVariant.of(BUCKET), FluidVariant.of(source), FluidConstants.BUCKET));
@@ -91,7 +146,20 @@ public class FluidRegistry {
 	public static BlockState getLavaInteraction(FluidState fluidState) {
 		Fluid fluid = fluidState.getType();
 		if (fluid.isSame(DARK_CHOCOLATE.get()))
-			return Blocks.COBBLED_DEEPSLATE
+			return AllPaletteStoneTypes.DEEPSLATE.getBaseBlock()
+					.get()
+					.defaultBlockState();
+		if (fluid.isSame(WHITE_CHOCOLATE.get()))
+			return AllPaletteStoneTypes.DIORITE.getBaseBlock()
+					.get()
+					.defaultBlockState();
+		if (fluid.isSame(RUBY_CHOCOLATE.get()))
+			return AllPaletteStoneTypes.GRANITE.getBaseBlock()
+					.get()
+					.defaultBlockState();
+		if (fluid.isSame(CARAMEL.get()))
+			return AllPaletteStoneTypes.DRIPSTONE.getBaseBlock()
+					.get()
 					.defaultBlockState();
 		return null;
 	}

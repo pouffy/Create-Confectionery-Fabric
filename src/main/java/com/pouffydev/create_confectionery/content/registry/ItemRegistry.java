@@ -21,10 +21,13 @@ public class ItemRegistry {
 			REGISTRATE.item("crushed_cocoa", Item::new)
 					.register();
 	public static final ItemEntry<Item> COCOA_BUTTER =
-			REGISTRATE.item("crushed_cocoa", Item::new)
+			REGISTRATE.item("cocoa_butter", Item::new)
+					.register();
+	public static final ItemEntry<Item> COCOA_POWDER =
+			REGISTRATE.item("cocoa_powder", Item::new)
 					.register();
 	public static final ItemEntry<Item> BAR_OF_DARK_CHOCOLATE =
-			REGISTRATE.item("bar_of_dark_chocolate", Item::new)
+			REGISTRATE.item("bar_of_black_chocolate", Item::new)
 					.properties(p -> p.food(new FoodProperties.Builder()
 							.nutrition(6)
 							.saturationMod(0.3F)
@@ -49,6 +52,15 @@ public class ItemRegistry {
 							.effect(new MobEffectInstance(MobEffects.SATURATION, 40, 0), 1.0F)
 							.build()))
 					.lang("Bar of Ruby Chocolate")
+					.register();
+	public static final ItemEntry<Item> BAR_OF_CARAMEL =
+			REGISTRATE.item("bar_of_caramel", Item::new)
+					.properties(p -> p.food(new FoodProperties.Builder()
+							.nutrition(6)
+							.saturationMod(0.3F)
+							.effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0), 1.0F)
+							.build()))
+					.lang("Bar of Caramel")
 					.register();
 
 
