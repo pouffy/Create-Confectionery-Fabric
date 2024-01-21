@@ -169,8 +169,9 @@ public class ItemRegistry {
 
 
 	public static ItemEntry<Item> chocolateBar(ChocolateType type) {
+		String typeName = type != ChocolateType.BLACK ? type.name : "Dark";
 		String name = type.name != null ? "bar_of_" + type.name.toLowerCase() + "_chocolate" : "bar_of_chocolate";
-		String lang = type.name != null ? "Bar of " + type.name + " Chocolate" : "Bar of Chocolate";
+		String lang = type.name != null ? "Bar of " + typeName + " Chocolate" : "Bar of Chocolate";
 		if (type == ChocolateType.NORMAL)
 			return REGISTRATE.item(name, Item::new)
 					.properties(p -> p.food(new FoodProperties.Builder()
@@ -190,23 +191,25 @@ public class ItemRegistry {
 					.register();
 	}
 	public static ItemEntry<FullChocolateBarItem> fullChocolateBar(ChocolateType type) {
+		String typeName = type != ChocolateType.BLACK ? type.name : "Dark";
 		String name = type.name != null ? "full_" + type.name.toLowerCase() + "_chocolate_bar" : "full_chocolate_bar";
-		String lang = type.name != null ? "Full " + type.name + " Chocolate Bar" : "Full Chocolate Bar";
+		String lang = type.name != null ? "Full " + typeName + " Chocolate Bar" : "Full Chocolate Bar";
 		if (type == ChocolateType.NORMAL)
 			return REGISTRATE.item(name, FullChocolateBarItem::new)
 					.properties(p -> p)
 					.lang(lang)
 					.register();
 		else
-			return REGISTRATE.item(name, (p) -> new FullChocolateBarItem(p, new MobEffectInstance(type.effect, 120, 0)))
+			return REGISTRATE.item(name, (p) -> new FullChocolateBarItem(p, type.effect))
 					.properties(p -> p)
 					.lang(lang)
 					.register();
 	}
 
 	public static ItemEntry<Item> glazedBerries(ChocolateType type) {
+		String typeName = type != ChocolateType.BLACK ? type.name : "Dark";
 		String name = type.name != null ? type.name.toLowerCase() + "_chocolate_glazed_berries" : "chocolate_glazed_berries";
-		String lang = type.name != null ? type.name + " Chocolate Glazed Berries" : "Chocolate Glazed Berries";
+		String lang = type.name != null ? typeName + " Chocolate Glazed Berries" : "Chocolate Glazed Berries";
 		if (type == ChocolateType.NORMAL)
 			return REGISTRATE.item(name, Item::new)
 					.properties(p -> p.food(new FoodProperties.Builder()
@@ -226,8 +229,9 @@ public class ItemRegistry {
 					.register();
 	}
 	public static ItemEntry<Item> glazedMarshmallow(ChocolateType type) {
+		String typeName = type != ChocolateType.BLACK ? type.name : "Dark";
 		String name = type.name != null ? type.name.toLowerCase() + "_chocolate_glazed_marshmallow" : "chocolate_glazed_marshmallow";
-		String lang = type.name != null ? type.name + " Chocolate Glazed Marshmallow" : "Chocolate Glazed Marshmallow";
+		String lang = type.name != null ? typeName + " Chocolate Glazed Marshmallow" : "Chocolate Glazed Marshmallow";
 		if (type == ChocolateType.NORMAL)
 			return REGISTRATE.item(name, Item::new)
 					.properties(p -> p.food(new FoodProperties.Builder()
@@ -246,26 +250,133 @@ public class ItemRegistry {
 					.lang(lang)
 					.register();
 	}
-	public static ItemEntry<Item> chocolateCandyDark(ChocolateType type) {
-		String name = type.name != null ? type.name.toLowerCase() + "_chocolate_candy" : "chocolate_candy";
-		String lang = type.name != null ? type.name + " Chocolate Candy" : "Chocolate Candy";
+	public static ItemEntry<Item> chocolateCandyDark(ChocolateType type, String name) {
+		if (type == ChocolateType.NORMAL)
+			return REGISTRATE.item(name, Item::new)
+					.properties(p -> p.food(new FoodProperties.Builder()
+							.nutrition(3)
+							.saturationMod(0.2F)
+							.build()))
+					.lang("Dark Chocolate Candy")
+					.register();
+		else
+			return REGISTRATE.item(name, Item::new)
+					.properties(p -> p.food(new FoodProperties.Builder()
+							.nutrition(3)
+							.saturationMod(0.2F)
+							.effect(new MobEffectInstance(type.effect, 120, 0), 1.0F)
+							.build()))
+					.lang("Dark Chocolate Candy")
+					.register();
+	}
+	public static ItemEntry<Item> chocolateCandy(ChocolateType type, String name) {
 		return REGISTRATE.item(name, Item::new)
 				.properties(p -> p.food(new FoodProperties.Builder()
 						.nutrition(3)
 						.saturationMod(0.2F)
 						.effect(new MobEffectInstance(type.effect, 120, 0), 1.0F)
 						.build()))
-				.lang(lang)
+				.lang("Chocolate Candy")
 				.register();
+	}
+	public static ItemEntry<Item> chocolateCandyWhite(ChocolateType type, String name) {
+		if (type == ChocolateType.NORMAL)
+			return REGISTRATE.item(name, Item::new)
+					.properties(p -> p.food(new FoodProperties.Builder()
+							.nutrition(3)
+							.saturationMod(0.2F)
+							.build()))
+					.lang("White Chocolate Candy")
+					.register();
+		else
+			return REGISTRATE.item(name, Item::new)
+					.properties(p -> p.food(new FoodProperties.Builder()
+							.nutrition(3)
+							.saturationMod(0.2F)
+							.effect(new MobEffectInstance(type.effect, 120, 0), 1.0F)
+							.build()))
+					.lang("White Chocolate Candy")
+					.register();
+	}
+	public static ItemEntry<Item> chocolateCandyRuby(ChocolateType type, String name) {
+		if (type == ChocolateType.NORMAL)
+			return REGISTRATE.item(name, Item::new)
+					.properties(p -> p.food(new FoodProperties.Builder()
+							.nutrition(3)
+							.saturationMod(0.2F)
+							.build()))
+					.lang("Ruby Chocolate Candy")
+					.register();
+		else
+			return REGISTRATE.item(name, Item::new)
+					.properties(p -> p.food(new FoodProperties.Builder()
+							.nutrition(3)
+							.saturationMod(0.2F)
+							.effect(new MobEffectInstance(type.effect, 120, 0), 1.0F)
+							.build()))
+					.lang("Ruby Chocolate Candy")
+					.register();
+	}
+	public static int candyInt(ChocolateType exterior, ChocolateType interior) {
+		if (exterior == ChocolateType.NORMAL) {
+			if (interior == ChocolateType.NORMAL)
+				return exterior.candyIntNormal;
+			if (interior == ChocolateType.WHITE)
+				return exterior.candyIntWhite;
+			if (interior == ChocolateType.RUBY)
+				return exterior.candyIntRuby;
+			if (interior == ChocolateType.BLACK)
+				return exterior.candyIntDark;
+		} else if (exterior == ChocolateType.WHITE) {
+			if (interior == ChocolateType.NORMAL)
+				return exterior.candyIntNormal;
+			if (interior == ChocolateType.WHITE)
+				return exterior.candyIntWhite;
+			if (interior == ChocolateType.RUBY)
+				return exterior.candyIntRuby;
+			if (interior == ChocolateType.BLACK)
+				return exterior.candyIntDark;
+		} else if (exterior == ChocolateType.RUBY) {
+			if (interior == ChocolateType.NORMAL)
+				return exterior.candyIntNormal;
+			if (interior == ChocolateType.WHITE)
+				return exterior.candyIntWhite;
+			if (interior == ChocolateType.RUBY)
+				return exterior.candyIntRuby;
+			if (interior == ChocolateType.BLACK)
+				return exterior.candyIntDark;
+		} else if (exterior == ChocolateType.BLACK) {
+			if (interior == ChocolateType.NORMAL)
+				return exterior.candyIntNormal;
+			if (interior == ChocolateType.WHITE)
+				return exterior.candyIntWhite;
+			if (interior == ChocolateType.RUBY)
+				return exterior.candyIntRuby;
+			if (interior == ChocolateType.BLACK)
+				return exterior.candyIntDark;
+		}
+		return 0;
 	}
 	public static void registerChocolate() {
 		for (ChocolateType type : ChocolateType.values()) {
 			if (type != ChocolateType.NORMAL) {
-				chocolateBar(type);
-				glazedBerries(type);
+				if (type != ChocolateType.CARAMEL) {
+					chocolateBar(type);
+
+				}
+				chocolateCandy(type, candyInt(ChocolateType.NORMAL, type) != 0 ? "chocolate_candy_" + candyInt(ChocolateType.NORMAL, type) : "chocolate_candy");
 			}
-			fullChocolateBar(type);
-			glazedMarshmallow(type);
+			if (type != ChocolateType.WHITE)
+				chocolateCandyWhite(type, candyInt(ChocolateType.WHITE, type) != 0 ? "white_chocolate_candy_" + candyInt(ChocolateType.WHITE, type) : "white_chocolate_candy");
+			if (type != ChocolateType.RUBY)
+				chocolateCandyRuby(type, candyInt(ChocolateType.RUBY, type) != 0 ? "ruby_chocolate_candy_" + candyInt(ChocolateType.RUBY, type) : "ruby_chocolate_candy");
+			if (type != ChocolateType.BLACK)
+				chocolateCandyDark(type, candyInt(ChocolateType.BLACK, type) != 0 ? "black_chocolate_candy_" + candyInt(ChocolateType.BLACK, type) : "black_chocolate_candy");
+			if (type != ChocolateType.CARAMEL) {
+				fullChocolateBar(type);
+				glazedMarshmallow(type);
+			}
+			glazedBerries(type);
 		}
 	}
 

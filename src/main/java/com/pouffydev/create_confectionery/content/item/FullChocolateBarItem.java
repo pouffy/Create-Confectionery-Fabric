@@ -4,6 +4,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
@@ -18,8 +19,8 @@ import net.minecraft.world.level.Level;
 
 @ParametersAreNonnullByDefault
 public class FullChocolateBarItem extends Item {
-	private final MobEffectInstance effect;
-	public FullChocolateBarItem(Properties properties, MobEffectInstance effect) {
+	private final MobEffect effect;
+	public FullChocolateBarItem(Properties properties, MobEffect effect) {
 		super(properties.stacksTo(1).defaultDurability(16));
 		this.effect = effect;
 	}
@@ -44,7 +45,7 @@ public class FullChocolateBarItem extends Item {
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
 		super.finishUsingItem(stack, level, livingEntity);
 		if (this.effect != null)
-			livingEntity.addEffect(new MobEffectInstance(this.effect.getEffect(), 120, 0));
+			livingEntity.addEffect(new MobEffectInstance(this.effect, 120, 0));
 		return stack.isEmpty() ? new ItemStack(this) : stack;
 	}
 }
