@@ -4,6 +4,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 
 import org.jetbrains.annotations.NotNull;
@@ -16,8 +18,14 @@ import net.minecraft.world.level.Level;
 
 @ParametersAreNonnullByDefault
 public class FullChocolateBarItem extends Item {
-	public FullChocolateBarItem() {
-		super(new Item.Properties().stacksTo(1).defaultDurability(16));
+	private final MobEffectInstance effect;
+	public FullChocolateBarItem(Properties properties, MobEffectInstance effect) {
+		super(properties.stacksTo(1).defaultDurability(16));
+		this.effect = effect;
+	}
+	public FullChocolateBarItem(Properties properties) {
+		super(properties.stacksTo(1).defaultDurability(16));
+		this.effect = null;
 	}
 	@Override
 	public int getUseDuration(ItemStack stack) {
@@ -30,9 +38,13 @@ public class FullChocolateBarItem extends Item {
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
 		ItemStack thisItemStack = player.getItemInHand(usedHand);
 		player.startUsingItem(usedHand);
-		thisItemStack.hurtAndBreak(1, player, (entity) -> {
-			entity.broadcastBreakEvent(usedHand);
-		});
+
 		return InteractionResultHolder.success(thisItemStack);
+	}
+	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
+		super.finishUsingItem(stack, level, livingEntity);
+		if (this.effect != null)
+			livingEntity.addEffect(new MobEffectInstance(this.effect.getEffect(), 120, 0));
+		return stack.isEmpty() ? new ItemStack(this) : stack;
 	}
 }
