@@ -9,5 +9,5 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
 public class ModGroup {
-	public static CreativeModeTab MAIN = FabricItemGroupBuilder.build(new ResourceLocation(Confectionery.ID, "main"), () -> new ItemStack(ItemRegistry.CRUSHED_COCOA.get()));
+	public static CreativeModeTab MAIN = FabricItemGroupBuilder.build(new ResourceLocation(Confectionery.ID, "main"), () -> new ItemStack(ItemRegistry.BAR_OF_CARAMEL.get()));
 }

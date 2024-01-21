@@ -1,5 +1,9 @@
 {
+  "_": "->------------------------]  Create: Confectionery  [------------------------<-",
+
   "itemGroup.create_confectionery.main": "Create: Confectionery",
+
+  "_": "->------------------------]  Game Elements  [------------------------<-",
 
   "effect.create_confectionery.rest": "Rest",
   "effect.create_confectionery.stimulation": "Stimulation",
@@ -8,6 +12,11 @@
   "item.create_confectionery.cocoa_butter": "Cocoa Butter",
   "item.create_confectionery.crushed_cocoa": "Crushed Cocoa",
   "item.create_confectionery.cocoa_powder": "Cocoa Powder",
+
+  "item.create_confectionery.hot_chocolate": "Hot Chocolate",
+  "item.create_confectionery.soothing_hot_chocolate": "Soothing Hot Chocolate",
+  "fluid.create_confectionery.hot_chocolate": "Hot Chocolate",
+
 
   "item.create_confectionery.bar_of_white_chocolate": "Bar of White Chocolate",
   "fluid.create_confectionery.white_chocolate": "White Chocolate",
@@ -23,5 +32,14 @@
 
   "item.create_confectionery.bar_of_caramel": "Bar of Caramel",
   "fluid.create_confectionery.caramel": "Caramel",
-  "item.create_confectionery.caramel_bucket": "Bucket of Caramel"
+  "item.create_confectionery.caramel_bucket": "Bucket of Caramel",
+
+  "item.create_confectionery.marshmallow": "Marshmallow",
+  "item.create_confectionery.marshmallows_on_a_stick": "Marshmallows on a Stick",
+  "item.create_confectionery.caramelized_marshmallows_on_a_stick": "Caramelized Marshmallows on a Stick",
+
+
+  "_": "->------------------------]  Item Descriptions  [------------------------<-"
+
+
 }

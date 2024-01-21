@@ -1,0 +1,32 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:slime_ball"
+    },
+    {
+      "fluidTag": "c:honey",
+      "amount": 27000
+    },
+    {
+      "fluid": "minecraft:water",
+      "amount": 27000
+    }
+  ],
+  "results": [
+    {
+      "item": "create_confectionery:marshmallow",
+      "count": 8
+    }
+  ],
+  "heatRequirement": "heated"
+}

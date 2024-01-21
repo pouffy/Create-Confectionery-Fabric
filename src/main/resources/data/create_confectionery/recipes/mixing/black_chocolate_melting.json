@@ -1,0 +1,15 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "create_confectionery:bar_of_black_chocolate"
+    }
+  ],
+  "results": [
+    {
+      "fluid": "create_confectionery:black_chocolate",
+      "amount": 27000
+    }
+  ],
+  "heatRequirement": "heated"
+}

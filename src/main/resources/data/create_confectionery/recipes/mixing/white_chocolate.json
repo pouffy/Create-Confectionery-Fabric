@@ -1,0 +1,22 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "create_confectionery:cocoa_butter"
+    },
+    {
+      "fluidTag": "c:milk",
+      "amount": 27000
+    }
+  ],
+  "results": [
+    {
+      "fluid": "create_confectionery:white_chocolate",
+      "amount": 27000
+    }
+  ],
+  "heatRequirement": "heated"
+}

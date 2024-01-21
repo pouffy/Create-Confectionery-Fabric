@@ -1,6 +1,7 @@
 package com.pouffydev.create_confectionery.content.registry;
 
 import com.pouffydev.create_confectionery.ModGroup;
+import com.pouffydev.create_confectionery.content.item.DrinkItem;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.Create;
 import com.simibubi.create.content.AllSections;
@@ -11,6 +12,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
 
 import static com.pouffydev.create_confectionery.Confectionery.registrate;
 
@@ -62,7 +64,81 @@ public class ItemRegistry {
 							.build()))
 					.lang("Bar of Caramel")
 					.register();
+	public static final ItemEntry<DrinkItem> HOT_CHOCOLATE =
+			REGISTRATE.item("hot_chocolate", DrinkItem::new)
+					.properties(p -> p.food(new FoodProperties.Builder()
+							.nutrition(4)
+							.saturationMod(0.3F)
+							.effect(new MobEffectInstance(MobEffects.REGENERATION, 120, 0), 1.0F)
+							.build())
+							.stacksTo(16)
+					)
+					.lang("Hot Chocolate")
+					.register();
+	public static final ItemEntry<DrinkItem> SOOTHING_HOT_CHOCOLATE =
+			REGISTRATE.item("soothing_hot_chocolate", DrinkItem::new)
+					.properties(p -> p.food(new FoodProperties.Builder()
+									.nutrition(6)
+									.saturationMod(0.4F)
+									.effect(new MobEffectInstance(MobEffects.REGENERATION, 120, 1), 1.0F)
+									.build())
+							.stacksTo(16)
+					)
+					.lang("Soothing Hot Chocolate")
+					.register();
+	public static final ItemEntry<Item> MARSHMALLOW =
+			REGISTRATE.item("marshmallow", Item::new)
+					.properties(p -> p.food(new FoodProperties.Builder()
+							.nutrition(2)
+							.saturationMod(0.1F)
+							.build()))
+					.lang("Marshmallow")
+					.register();
+	public static final ItemEntry<Item> MARSHMALLOWS_ON_A_STICK =
+			REGISTRATE.item("marshmallows_on_a_stick", Item::new)
+					.properties(p -> p.food(new FoodProperties.Builder()
+							.nutrition(7)
+							.saturationMod(0.7F)
+							.build()))
+					.lang("Marshmallows on a Stick")
+					.register();
+	public static final ItemEntry<Item> CARAMELIZED_MARSHMALLOWS_ON_A_STICK =
+			REGISTRATE.item("caramelized_marshmallows_on_a_stick", Item::new)
+					.properties(p -> p.food(new FoodProperties.Builder()
+							.nutrition(8)
+							.saturationMod(0.9F)
+									.effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0), 1.0F)
+							.build()))
+					.lang("Caramelized Marshmallows on a Stick")
+					.register();
+	//TODO: Don't forget to go through the item classes and get their properties right
+	public static final ItemEntry<Item> GINGERDOUGH =
+			REGISTRATE.item("gingerdough", Item::new)
+					.properties(p -> p)
+					.lang("Gingerdough")
+					.register();
+	public static final ItemEntry<Item> GINGERBREAD =
+			REGISTRATE.item("gingerbread", Item::new)
+					.properties(p -> p.food(new FoodProperties.Builder()
+							.nutrition(4)
+							.saturationMod(0.3F)
+							.build()))
+					.lang("Gingerbread")
+					.register();
+	public static final ItemEntry<Item> GINGERBREAD_MAN =
+			REGISTRATE.item("gingerbread_man", Item::new)
+					.properties(p -> p.food(new FoodProperties.Builder()
+							.nutrition(2)
+							.saturationMod(0.3F)
+							.build()))
+					.lang("Gingerbread Man")
+					.register();
 
+	public static final ItemEntry<SpawnEggItem> LITTLE_GINGERBREAD_MAN_SPAWN_EGG =
+			REGISTRATE.item("little_gingerbread_man_spawn_egg", (p) -> new SpawnEggItem(EntityRegistry.LITTLE_GINGERBREAD_MAN.get(), -5611197, -2435116, p))
+					.properties(p -> p)
+					.lang("Gingerbread Man Spawn Egg")
+					.register();
 
 
 

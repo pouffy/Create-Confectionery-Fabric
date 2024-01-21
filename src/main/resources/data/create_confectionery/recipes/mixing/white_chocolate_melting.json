@@ -1,0 +1,15 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "create_confectionery:bar_of_white_chocolate"
+    }
+  ],
+  "results": [
+    {
+      "fluid": "create_confectionery:white_chocolate",
+      "amount": 27000
+    }
+  ],
+  "heatRequirement": "heated"
+}

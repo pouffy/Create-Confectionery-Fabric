@@ -1,3 +1,25 @@
 {
+  "item.create_confectionery.bar_of_white_chocolate.tooltip": "BAR OF WHITE CHOCOLATE",
+  "item.create_confectionery.bar_of_white_chocolate.tooltip.condition1": "When Consumed",
+  "item.create_confectionery.bar_of_white_chocolate.tooltip.behaviour1": "_Rest (0:30)_",
 
+  "item.create_confectionery.bar_of_black_chocolate.tooltip": "BAR OF DARK CHOCOLATE",
+  "item.create_confectionery.bar_of_black_chocolate.tooltip.condition1": "When Consumed",
+  "item.create_confectionery.bar_of_black_chocolate.tooltip.behaviour1": "_Stimulation (0:30)_",
+
+  "item.create_confectionery.bar_of_ruby_chocolate.tooltip": "BAR OF RUBY CHOCOLATE",
+  "item.create_confectionery.bar_of_ruby_chocolate.tooltip.condition1": "When Consumed",
+  "item.create_confectionery.bar_of_ruby_chocolate.tooltip.behaviour1": "_Saturation (0:02)_",
+
+  "item.create_confectionery.bar_of_caramel.tooltip": "BAR OF CARAMEL",
+  "item.create_confectionery.bar_of_caramel.tooltip.condition1": "When Consumed",
+  "item.create_confectionery.bar_of_caramel.tooltip.behaviour1": "_Speed (0:10)_",
+
+  "item.create_confectionery.hot_chocolate.tooltip": "HOT CHOCOLATE",
+  "item.create_confectionery.hot_chocolate.tooltip.condition1": "When Consumed",
+  "item.create_confectionery.hot_chocolate.tooltip.behaviour1": "_Regeneration (0:06)_",
+
+  "item.create_confectionery.soothing_hot_chocolate.tooltip": "SOOTHING HOT CHOCOLATE",
+  "item.create_confectionery.soothing_hot_chocolate.tooltip.condition1": "When Consumed",
+  "item.create_confectionery.soothing_hot_chocolate.tooltip.behaviour1": "_Regeneration II (0:06)_"
 }

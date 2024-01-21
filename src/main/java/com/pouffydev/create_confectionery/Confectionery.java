@@ -3,6 +3,11 @@ package com.pouffydev.create_confectionery;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import com.pouffydev.create_confectionery.content.registry.BlockRegistry;
+import com.pouffydev.create_confectionery.content.registry.EntityRegistry;
+
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,6 +43,9 @@ public class Confectionery implements ModInitializer {
 		ItemRegistry.register();
 		EffectsRegistry.registerEffects();
 		FluidRegistry.register();
+		EntityRegistry.register();
+		BlockRegistry.register();
+		CreateConfectioneryEntities.register();
 		REGISTRATE.register();
 
 		Confectionery.init();

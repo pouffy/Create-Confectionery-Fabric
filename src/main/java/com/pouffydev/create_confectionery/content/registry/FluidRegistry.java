@@ -2,12 +2,14 @@ package com.pouffydev.create_confectionery.content.registry;
 
 import static com.pouffydev.create_confectionery.Confectionery.REGISTRATE;
 import static net.minecraft.world.item.Items.BUCKET;
-
-
+import static net.minecraft.world.item.Items.GLASS_BOTTLE;
 
 import javax.annotation.Nullable;
 
+import com.pouffydev.create_confectionery.Confectionery;
 import com.simibubi.create.AllTags;
+import com.simibubi.create.Create;
+import com.simibubi.create.content.contraptions.fluids.VirtualFluid;
 import com.simibubi.create.content.palettes.AllPaletteStoneTypes;
 import com.simibubi.create.foundation.fluid.FluidHelper;
 import com.simibubi.create.foundation.utility.Iterate;
@@ -21,20 +23,21 @@ import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariantAttributeHandler;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariantAttributes;
 import net.fabricmc.fabric.api.transfer.v1.fluid.base.EmptyItemFluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.fluid.base.FullItemFluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
+import net.minecraft.network.chat.Component;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.network.chat.Component;
+
 @SuppressWarnings("UnstableApiUsage")
 public class FluidRegistry {
 
@@ -110,6 +113,18 @@ public class FluidRegistry {
 								new EmptyItemFluidStorage(context, bucket -> ItemVariant.of(source.getBucket()), source, FluidConstants.BUCKET));
 					})
 					.register();
+	public static final FluidEntry<VirtualFluid> HOT_CHOCOLATE = Confectionery.REGISTRATE.virtualFluid("hot_chocolate")
+			.lang("Hot Chocolate")
+			.tag(AllTags.forgeFluidTag("hot_chocolate"))
+			.fluidAttributes(() -> new CreateAttributeHandler("fluid.create_confectionery.hot_chocolate"))
+			.onRegisterAfter(Registry.ITEM_REGISTRY, hot_chocolate -> {
+				Fluid still = hot_chocolate.getSource();
+				FluidStorage.combinedItemApiProvider(ItemRegistry.HOT_CHOCOLATE.get()).register(context ->
+						new FullItemFluidStorage(context, bottle -> ItemVariant.of(GLASS_BOTTLE), FluidVariant.of(still), FluidConstants.BOTTLE));
+				FluidStorage.combinedItemApiProvider(GLASS_BOTTLE).register(context ->
+						new EmptyItemFluidStorage(context, bottle -> ItemVariant.of(ItemRegistry.HOT_CHOCOLATE.get()), still, FluidConstants.BOTTLE));
+			})
+			.register();
 
 
 	public static void register() {
@@ -185,6 +200,18 @@ public class FluidRegistry {
 		@Override
 		public boolean isLighterThanAir(FluidVariant variant) {
 			return lighterThanAir;
+		}
+	}
+	private static class HotChocolateFluidVariantAttributeHandler implements FluidVariantAttributeHandler {
+		@Override
+		public Component getName(FluidVariant fluidVariant) {
+			return Component.translatable("fluid.create_confectionery.hot_chocolate");
+		}
+	}
+	private record FluidNameAttributeHandler(String key) implements FluidVariantAttributeHandler {
+		@Override
+		public Component getName(FluidVariant fluidVariant) {
+			return Component.translatable(this.key);
 		}
 	}
 }
